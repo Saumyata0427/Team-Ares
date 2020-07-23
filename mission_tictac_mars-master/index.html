@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+    <title>Tic-Tac-Toe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=McLaren&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body{
+            background-image: url(dist/assets/mars1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="navbar-container">
+        <a id="button-audio" onclick="audioFunction()" class="nav-button">
+            <p id="icon-music" class="icon-2"><i class="fa fa-music"></i></p>
+        </a>
+        <a href="./rules.html" class="nav-button">
+            <p class="icon"><i class="fa fa-question"></i></p>
+        </a>
+    </div>
+
+    
+    <div class="content-container">
+        
+        <div class="white-container">
+            <h1 class="title">Mission Tic-Tac-Mars</h1>
+            <button class="start" onclick="playerFunction1()">Astronaut vs Space Bot</button>
+            <button class="start" onclick="playerFunction2()">Astronaut vs Astronaut</button>
+        </div>
+        
+	</div>
+	<audio id="myAudio" allow='autoplay' loop='loop' loop>
+		<source src="music/cublak.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</body>
+<script>
+    var x = document.getElementById("myAudio");
+    var checkAudio = true;
+    var property = document.getElementById("icon-music");
+    function audioFunction() {
+        if (checkAudio === true) {
+            property.style.color = "#F08732";
+            x.play();
+            checkAudio = false;
+        } else if (checkAudio === false) {
+            property.style.color = "#FFFFFF";
+            x.pause();
+            checkAudio = true;
+        }
+    }
+    function playerFunction1(){
+        window.location.href = '1player.html';
+    }
+    function playerFunction2(){
+        window.location.href = '2player.html';
+    }
+</script>
+</html>
