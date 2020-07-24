@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<head>
+    <title>Tic-Tac-Toe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <script src="js/main2.js"></script>
+    <link rel="stylesheet" href="dist/css/reset.css">
+    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=McLaren&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body{
+            background-image: url(dist/assets/mars1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body onload="openModal();">
+    <div class="navbar-container">
+        <a id="button-audio" onclick="audioFunction()" class=" nav-button">
+            <p id="icon-music" class="icon-2"><i class="fa fa-music"></i></p>
+        </a>
+        <a href="./rules.html" class="nav-button">
+            <p class="icon"><i class="fa fa-question"></i></p>
+        </a>
+        
+        <a href="./index.html" class="nav-button">
+            <p class="icon"><i class="fa fa-home"></i></p>
+        </a>
+    </div>
+    <div class="navbar-container-2">
+        <a href="./2player.html" class="nav-button">
+        <p class="icon-2"><i class="fa fa-arrow-left" aria-hidden="true"></i></p> 
+        </a>
+</div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1 class="subtitle">Get ready to battle!!!</h1>
+            <hr class="line">
+            <div class="how-to-content">
+                <p>Player who draws <b>3 symbols</b> in a row first, whether horizontally, vertically or diagonally wins.</p>
+                <br>
+                <p>If feel trapped during the game, No worries!!. Press the <b><span style="color:red">Life Gaurd</span> button</b>, to let AI jump in for rescue.</p>
+                <br>
+                <p><b><span style="color:red">Only ONE Life gaurd per player</span></b></p>
+                <br>
+                <p><b>All the Best!</b></p>
+              </div>
+        </div>
+    </div>
+    <div class="content-container">
+        <h1 class="title-2">Mission Tic-Tac-Mars</h1>
+        <div class="board-container">
+            <div class="board-size">
+                <div class="size">
+                    <button id="size3" onclick="function3()" class="button-size">3x3</button>
+                    <button id="size4" onclick="function4()" class="button-size">4x4</button>
+                    <button id="size5" onclick="function5()" class="button-size">5x5</button>
+                </div>
+            </div>
+            <div class="board-content">
+                <div class="row-board">
+                    <img class="tile" src="images/blank2.png" onclick="makeMove(0)" />
+                    <img class="tile" src="images/blank2.png" onclick="makeMove(1)" />
+                    <img class="tile" src="images/blank2.png" onclick="makeMove(2)" />
+                </div>
+                <div class="row-board">
+                    <img class="tile" src="images/blank2.png" onclick="makeMove(3)" />
+                    <img class="tile" src="images/blank2.png" onclick="makeMove(4)" />
+                    <img class="tile" src="images/blank2.png" onclick="makeMove(5)" />
+                </div>
+                <div class="row-board">
+                    <img class="tile" src="images/blank2.png" onclick="makeMove(6)" />
+                    <img class="tile" src="images/blank2.png" onclick="makeMove(7)" />
+                    <img class="tile" src="images/blank2.png" onclick="makeMove(8)" />
+                </div>
+                <input class="hint" type="button" value="Life Gaurd" onclick="makeHelp()"/>
+                <input class="new-game" type="button" value="Replay" onclick="newboard()" />
+            </div>
+            <div class="info-game">
+                <p id="turnInfo"> We have crossed Earths atmosphere. On our way to Mars! </p>
+            </div>
+        </div>
+       
+    </div>
+    <audio id="myAudio" allow='autoplay' loop='loop' loop>
+        <source src="music/cublak.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</body>
+<script>
+    function openModal(){
+    var modal = document.getElementById("modal");
+    var span=document.getElementsByClassName("close")[0];
+ // Get the <span> element that closes the modal
+     modal.style.display = "flex";
+    
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+        newboard();
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            newboard();
+        }
+    }
+}
+    var x = document.getElementById("myAudio");
+    var checkAudio = true;
+    var property = document.getElementById("icon-music");
+    function audioFunction() {
+        if (checkAudio === true) {
+            property.style.color = "#F08732";
+            x.play();
+            checkAudio = false;
+        } else if (checkAudio === false) {
+            property.style.color = "#FFFFFF";
+            x.pause();
+            checkAudio = true;
+        }
+    }
+    function function3() {
+        let params = (new URL(document.location)).searchParams;
+        let name = params.get('name');
+        let size = params.get('size');
+            if (name === "hearts") {
+                window.location.href = '3x3x2.html?name=hearts&size=3';
+            }else if (name === "dabs") {
+                window.location.href = '3x3x2.html?name=dabs&size=3';
+            } 
+    }
+    function function4() {
+        let params = (new URL(document.location)).searchParams;
+        let name = params.get('name');
+        let size = params.get('size');
+            if (name === "hearts") {
+                window.location.href = '4x4x2.html?name=hearts&size=4';
+            }else if (name === "dabs") {
+                window.location.href = '4x4x2.html?name=dabs&size=4';
+            } 
+    }
+    function function5() {
+        let params = (new URL(document.location)).searchParams;
+        let name = params.get('name');
+        let size = params.get('size');
+            if (name === "hearts") {
+                window.location.href = '5x5x2.html?name=hearts&size=5';
+            }else if (name === "dabs") {
+                window.location.href = '5x5x2.html?name=dabs&size=5';
+            } 
+    }
+</script>
+
+</html>

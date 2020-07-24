@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<head>
+    <title>Tic-Tac-Toe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=McLaren&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body{
+            background-image: url(dist/assets/mars1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar-container">
+        <a id="button-audio" onclick="audioFunction()" class="nav-button">
+            <p id="icon-music" class="icon-2"><i class="fa fa-music"></i></p>
+        </a>
+        <a href="./rules.html" class="nav-button">
+            <p class="icon"><i class="fa fa-question"></i></p>
+        </a>
+        <a href="./index.html" class="nav-button">
+            <p class="icon"><i class="fa fa-home"></i></p>
+        </a>
+    </div>
+    <div class="navbar-container-2">
+        <a href="./index.html" class="nav-button">
+        <p class="icon-2"><i class="fa fa-arrow-left" aria-hidden="true"></i></p> 
+        </a>
+</div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1 class="subtitle">Get ready to battle!!!</h1>
+            <hr class="line">
+            <div class="how-to-content">
+               <p></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-container">
+        <div class="white-container">
+            <h1>Astronaut vs Astronaut</h1>
+            <h1 class="title">Mission Tic-Tac-Mars</h1>
+            <div class="row">
+                <div class="left">
+                    <p>Astronaut Hearts:</p>
+                </div>
+                <div class="right">
+                    <img class="tile" src="./images/astro5.jpg"/>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="left">
+                    <p>Astronaut Dabs:</p>
+                </div>
+                <div class="right">
+                    <img class="tile" src="./images/astro4.jpg"/>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="left">
+                    <p>
+                        Who Starts?
+                    </p>
+                </div>
+                <div class="right">
+                    <select class="selection" id="player">
+                        <option value="hearts">Astronaut Hearts</option>
+                        <option value="dabs">Astronaut Dabs</option>
+                     
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <p>Select your grid size:</p>
+                </div>
+                <div class="right">
+                    <select class="selection" id="size">
+                        <option value="3">3 x 3</option>
+                        <option value="4">4 x 4</option>
+                        <option value="5">5 x 5</option>
+                    </select>
+                </div>
+            </div>
+            <button class="start" onclick="startFunction()">Let's see who reaches Mars first!</button>
+        </div>
+       
+	</div>
+	<audio id="myAudio" allow='autoplay' loop='loop' loop>
+		<source src="music/cublak.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</body>
+<script>
+    function openModal(){
+    // Get the modal
+    var modal = document.getElementById("modal");
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    modal.style.display = "flex";
+    
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+        newboard();
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            newboard();
+        }
+    }
+    }
+
+    var x = document.getElementById("myAudio");
+    var checkAudio = true;
+    var property = document.getElementById("icon-music");
+    function audioFunction() {
+        if (checkAudio === true) {
+            property.style.color = "#F08732";
+            x.play();
+            checkAudio = false;
+        } else if (checkAudio === false) {
+            property.style.color = "#FFFFFF";
+            x.pause();
+            checkAudio = true;
+        }
+    }
+
+    function startFunction() {
+        var player=document.getElementById("player").value
+        var size = document.getElementById("size").value;
+            if(player=="hearts"){
+                if (size == 3) {
+                    window.location.href = '3x3x2.html?name=hearts&size=3';
+                } else if (size == 4) {
+                    window.location.href = '4x4x2.html?name=hearts&size=4';
+                } else if (size == 5) {
+                    window.location.href = '5x5x2.html?name=hearts&size=5';
+                }
+            }
+            else if(player=="dabs")
+            {
+                if (size == 3) {
+                    window.location.href = '3x3x2.html?name=dabs&size=3';
+                } else if (size == 4) {
+                    window.location.href = '4x4x2.html?name=dabs&size=4';
+                } else if (size == 5) {
+                    window.location.href = '5x5x2.html?name=dabs&size=5';
+                }
+            }
+            
+            
+        }
+</script>
+</html>

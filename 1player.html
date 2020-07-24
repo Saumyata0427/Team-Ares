@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<head>
+    <title>Tic-Tac-Toe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=McLaren&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body{
+            background-image: url(dist/assets/mars1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar-container">
+        <a id="button-audio" onclick="audioFunction()" class="nav-button">
+            <p id="icon-music" class="icon-2"><i class="fa fa-music"></i></p>
+        </a>
+        <a href="./rules.html" class="nav-button">
+            <p class="icon"><i class="fa fa-question"></i></p>
+        </a>
+        <a href="./index.html" class="nav-button">
+			<p class="icon"><i class="fa fa-home"></i></p>
+		</a>
+    </div>
+    <div class="navbar-container-2">
+        <a href="./index.html" class="nav-button">
+        <p class="icon-2"><i class="fa fa-arrow-left" aria-hidden="true"></i></p> 
+        </a>
+</div>
+    
+    <div class="content-container">
+        <div class="white-container">
+            <h1>Astronaut vs Space Bot</h1>
+            <h1 class="title">Mission Tic-Tac-Mars</h1>
+            <div class="row">
+                <div class="left">
+                    <p>Astronaut (you):</p>
+                </div>
+                <div class="right">
+                    <img class="tile" src="images/astro1.jpg"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                   <p> Space Bot (computer):</p>
+                </div>
+                <div class="right">
+                    <img class="tile" src="./images/astro2.jpg"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <p>Who starts?:</p>
+                </div>
+                <div class="right">
+                    <select class="selection" id="player">
+                        <option value="human">Astronaut (you)</option>
+                        <option value="computer">Space Bot (computer)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <p>Select your grid size:</p>
+                </div>
+                <div class="right">
+                    <select class="selection" id="size">
+                        <option value="3">3 x 3</option>
+                        <option value="4">4 x 4</option>
+                        <option value="5">5 x 5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <p>Select your opponent:</p>
+                </div>
+                <div class="right">
+                    <select class="selection" id="level" >
+                        <option value="very_easy" style="color:blue">lieutenant (level 1)</option>
+                        <option value="easy" style="color:green">major (level 2)</option>
+                        <option value="medium" style="color:orange">colonel (level 3)</option>
+                        <option value="hard" style="color:red">marshal (level 4)</option>                                                
+                    </select>
+                </div>
+            </div>
+            <button class="start" onclick="startFunction()">Let's start our mission to Mars!</button>
+        </div>
+        
+	</div>
+	
+    
+	<audio id="myAudio" allow='autoplay' loop='loop' loop>
+		<source src="music/cublak.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</body>
+<script>
+   var x = document.getElementById("myAudio");
+    var checkAudio = true;
+    var property = document.getElementById("icon-music");
+    function audioFunction() {
+        if (checkAudio === true) {
+            property.style.color = "#F08732";
+            x.play();
+            checkAudio = false;
+        } else if (checkAudio === false) {
+            property.style.color = "#FFFFFF";
+            x.pause();
+            checkAudio = true;
+        }
+    }
+
+    function startFunction() {
+        var player = document.getElementById("player").value;
+        var size = document.getElementById("size").value;
+        var level = document.getElementById("level").value;
+        if (level == "very_easy") {
+            if (player == "human") {
+                if (size == 3) {
+                    window.location.href = '3x3.html?name=human&level=very_easy&size=3';
+                } else if (size == 4) {
+                    window.location.href = '4x4.html?name=human&level=very_easy&size=4';
+                } else if (size == 5) {
+                    window.location.href = '5x5.html?name=human&level=very_easy&size=5';
+                }
+            }
+            else if (player == "computer") {
+                if (size == 3) {
+                    window.location.href = '3x3.html?name=computer&level=very_easy&size=3';
+                } else if (size == 4) {
+                    window.location.href = '4x4.html?name=computer&level=very_easy&size=4';
+                } else if (size == 5) {
+                    window.location.href = '5x5.html?name=computer&level=very_easy&size=5';
+                }
+            }
+        }
+        if (level == "easy") {
+            if (player == "human") {
+                if (size == 3) {
+                    window.location.href = '3x3.html?name=human&level=easy&size=3';
+                } else if (size == 4) {
+                    window.location.href = '4x4.html?name=human&level=easy&size=4';
+                } else if (size == 5) {
+                    window.location.href = '5x5.html?name=human&level=easy&size=5';
+                }
+            }
+            else if (player == "computer") {
+                if (size == 3) {
+                    window.location.href = '3x3.html?name=computer&level=easy&size=3';
+                } else if (size == 4) {
+                    window.location.href = '4x4.html?name=computer&level=easy&size=4';
+                } else if (size == 5) {
+                    window.location.href = '5x5.html?name=computer&level=easy&size=5';
+                }
+            }
+        }
+        if (level == "medium") {
+            if (player == "human") {
+                if (size == 3) {
+                    window.location.href = '3x3.html?name=human&level=medium&size=3';
+                } else if (size == 4) {
+                    window.location.href = '4x4.html?name=human&level=medium&size=4';
+                } else if (size == 5) {
+                    window.location.href = '5x5.html?name=human&level=medium&size=5';
+                }
+            }
+            else if (player == "computer") {
+                if (size == 3) {
+                    window.location.href = '3x3.html?name=computer&level=medium&size=3';
+                } else if (size == 4) {
+                    window.location.href = '4x4.html?name=computer&level=medium&size=4';
+                } else if (size == 5) {
+                    window.location.href = '5x5.html?name=computer&level=medium&size=5';
+                }
+            }
+        }
+        else if (level == "hard") {
+            if (player == "human") {
+                if (size == 3) {
+                    window.location.href = '3x3.html?name=human&size=3';
+                } else if (size == 4) {
+                    window.location.href = '4x4.html?name=human&size=4';
+                } else if (size == 5) {
+                    window.location.href = '5x5.html?name=human&size=5';
+                }
+            }
+            else if (player == "computer") {
+                if (size == 3) {
+                    window.location.href = '3x3.html?name=computer&size=3';
+                } else if (size == 4) {
+                    window.location.href = '4x4.html?name=computer&size=4';
+                } else if (size == 5) {
+                    window.location.href = '5x5.html?name=computer&size=5';
+                }
+            }
+        }
+    }
+</script>
+</html>
