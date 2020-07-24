@@ -115,17 +115,11 @@ function computerOnBoard(move){
 
 //Whenever active turn is of human, this function validTurn() is called to check the validity of the human move
 function validTurn() {
-    X_sum = name == "computer" ? 1 : 0;
-    O_sum = 0
-    for(var i = 0; i < BOARD_SIZE; i++) {
-        if(board[i] == 'X') {
-            X_sum++;
-        } else if (board[i] == "O"){
-            O_sum++;
-        }
-    }
-    isValid =  (X_sum + O_sum) % 2 == 0;
-    return isValid;
+    var y= checkWinningCondition(board);//to check whether the game is tie, won , or lostss
+    if(y == 0)
+        return 1;
+    else 
+        return 0;
 }
 
 //Whenever the cell of the matrix is clicked upon by the human the function makeMove() is called in the script
