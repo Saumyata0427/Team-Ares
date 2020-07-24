@@ -4,7 +4,7 @@
 Project Title: 
 Mission Tic-Tac-Mars 
 
-URL for our deployed game : 
+URL for our deployed game : https://saumyata0427.github.io/Team-Ares/index.html
 
 Description:
 A Tic-Tac-Toe game specially curated for our astronauts heading towards Mars to establish a permanent settlement. We Team Ares have taken up the challenge to entertain our crew with this engaging game.
