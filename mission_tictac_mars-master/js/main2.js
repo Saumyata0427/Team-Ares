@@ -73,9 +73,19 @@ function newboard() {
         turnInfo.innerHTML = 'Astronaut Hearts as first player';
     }
 }
-
-//Whenever the cell of the matrix is clicked upon by the human the function makeMove() is called in the script
+//Whenever a cell is pressed upon by the either player, this function validTurn() is called to check the validity of the move
+function validTurn() {
+    var y= checkWinningCondition(board);//to check whether the game is tie, or won 
+    if(y == 0)
+        return 1;
+    else 
+        return 0;
+}
+//Whenever the cell of the matrix is clicked upon by the either player the function makeMove() is called in the script
 function makeMove(pieceMove) {
+    if(!validTurn()) {//checking the validity of move
+        return;
+    }
     if (!isGameOver(board) && board[pieceMove] === NOT_OCCUPIED)
             TURN = activeturninfo(TURN,pieceMove);//this function is called for to make changes on the board 
 }                                                 //corresponding to whose turn it is and to change the turn
@@ -142,7 +152,7 @@ function countHelp(turn,count,name,helps){
 }
 
 function minimax(node, depth, alpha, beta) {
-    var x=checkWinningCondition(node);//this function is called to check whether the game has tied, or won or lost by the human
+    var x=checkWinningCondition(node);//this function is called to check whether the game has tied, or won by the either player
     if (x === 1 || x === 2 || x === 3 || depth === 6){//either the game has won or tied, or maximum depth has been reached
         return gameScore(node, depth);//calling this function to return the score of the board
     }
